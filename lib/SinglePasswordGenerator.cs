@@ -16,20 +16,14 @@ namespace PasswordGenerator
         {
             context = new InterpretingContext();
 
-            var ls = new List<BaseExpression>();
-            ls.Add(new GenExpression { Length = lenght, Alphabets = alphabets.ToList()});
-
-            resolver = new ExpressionCommandResolver(ls);
+            resolver = new SimpleCommandResolver(lenght, alphabets);
         }
 
         public SinglePasswordGenerator(int lenght, IAlphabet alphabet, params string[] alphabets)
         {
             context = new InterpretingContext(alphabet);
 
-            var ls = new List<BaseExpression>();
-            ls.Add(new GenExpression { Length = lenght, Alphabets = alphabets.ToList()});
-
-            resolver = new ExpressionCommandResolver(ls);
+            resolver = new SimpleCommandResolver(lenght, alphabets);
         }
 
         protected override string OnEvaluated()

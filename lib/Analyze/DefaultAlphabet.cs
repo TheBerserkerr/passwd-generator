@@ -23,7 +23,7 @@ namespace PasswordGenerator.Analyze
                 case "s":
                     return s;
                 default:
-                    return "";
+                    return null;
             }
         }
     }

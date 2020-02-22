@@ -23,6 +23,12 @@ namespace PasswordGenerator
             context = new InterpretingContext();
         }
 
+        public FromCommandPasswordGenerator(string cmd, IAlphabet alphabet)
+        {
+            resolver = new StringCommandResolver(cmd);
+            context = new InterpretingContext(alphabet);
+        }
+
         public FromCommandPasswordGenerator(string cmd, IInterpretingContext context, IAlphabet alphabet)
         {
             resolver = new StringCommandResolver(cmd);

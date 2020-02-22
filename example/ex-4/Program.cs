@@ -2,23 +2,26 @@
 using PasswordGenerator;
 using PasswordGenerator.Analyze.Abstract;
 
-namespace ex_2
+namespace ex_4
 {
     class Program
     {
         static void Main(string[] args)
         {
-            // Simple generate password with custom alphabet
+            // Simple generate password using command line and custom alphabet
 
             // 54 characters length
-            // using custom alphabet
-            var generator = new SinglePasswordGenerator(54, new CustomAlphabet(), "l");
+            // using uppercase letters, lowercase letters, symbols and digits
+            var generator = new FromCommandPasswordGenerator("gen len 54 alpha l|u", new CustomAlphabet());
 
             // generate password
-            // returns string
+            // returns list of passwords
             var pass = generator.Generate();
 
-            System.Console.WriteLine(pass);
+            foreach (var item in pass)
+            {
+                System.Console.WriteLine(item);
+            }
         }
     }
 
