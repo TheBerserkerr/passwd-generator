@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Linq;
+using System.Collections.Generic;
 using PasswordGenerator;
+using PasswordGenerator.Analyze.Abstract;
 using PasswordGenerator.Analyze;
 using PasswordGenerator.Abstract;
-using PasswordGenerator.Analyze.Abstract;
 using PasswordGenerator.Evaluating.Context;
+using PasswordGenerator.Analyze.Expression;
 
-namespace ex_5
+namespace ex_6
 {
     class Program
     {
@@ -31,12 +34,23 @@ namespace ex_5
         public CustomGenerator()
         {
             context = new InterpretingContext();
-            resolver = new SimpleCommandResolver(10, "ll", "ul");
+            resolver = new CustomCommandResolver();
         }
 
         protected override string OnEvaluated()
         {
             return "test";
+        }
+    }
+
+    public class CustomCommandResolver : ICommandResolver
+    {
+        public List<BaseExpression> Resolve()
+        {
+            var ls = new List<BaseExpression>();
+            ls.Add(new GenExpression { Length = 12, Alphabets = new List<string> { "ll" }});
+
+            return ls;
         }
     }
 }

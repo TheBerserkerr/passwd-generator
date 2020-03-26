@@ -12,18 +12,18 @@ namespace PasswordGenerator
     public class SinglePasswordGenerator : BaseGenerator<string>
     {
 
-        public SinglePasswordGenerator(int lenght, params string[] alphabets)
+        public SinglePasswordGenerator(int length, params string[] alphabets)
         {
             context = new InterpretingContext();
 
-            resolver = new SimpleCommandResolver(lenght, alphabets);
+            resolver = new SimpleCommandResolver(length, alphabets);
         }
 
-        public SinglePasswordGenerator(int lenght, IAlphabet alphabet, params string[] alphabets)
+        public SinglePasswordGenerator(int length, IAlphabet alphabet, params string[] alphabets)
         {
             context = new InterpretingContext(alphabet);
 
-            resolver = new SimpleCommandResolver(lenght, alphabets);
+            resolver = new SimpleCommandResolver(length, alphabets);
         }
 
         protected override string OnEvaluated()

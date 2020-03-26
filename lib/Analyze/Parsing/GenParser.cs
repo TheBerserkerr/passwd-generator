@@ -43,6 +43,7 @@ namespace PasswordGenerator.Analyze.Parsing
                 
                 while(GetCurrent().Kind == TokenKind.And)
                 {
+                    Match(TokenKind.And);
                     alpha.Add(Match(TokenKind.Identifier));
                 }
 
